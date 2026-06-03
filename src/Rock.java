@@ -1,9 +1,14 @@
-class Rock extends Piece{
-    boolean isValidMove(Position newPosition){
-        if(newPosition.column == this.column || newPosition.row == this.row){
-            return true;
+class Rock extends Piece {
+    boolean isValidMove(Position newPosition) {
+        // Appeler d'abord la méthode parente pour les limites du plateau
+        if (!super.isValidMove(newPosition)) {
+            return false;
         }
-        else{
+
+        // Vérifier le mouvement spécifique de la tour (vertical ou horizontal)
+        if (newPosition.column == this.column || newPosition.row == this.row) {
+            return true;
+        } else {
             return false;
         }
     }
